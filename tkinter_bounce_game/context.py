@@ -1,6 +1,8 @@
+from __future__ import annotations
+
 import enum
 import time
-from tkinter import Canvas, Tk
+from tkinter import Canvas, Event, Misc, Tk
 from typing import Optional, Protocol
 
 
@@ -60,7 +62,7 @@ class Context:
             self._tk.update()
             time.sleep(0.01)
 
-    def _start(self, event: object) -> None:
+    def _start(self, event: Event[Misc]) -> None:
         if self.state == State.Starting:
             self.state = State.Runnning
 
