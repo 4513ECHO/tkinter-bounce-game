@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "tkinter-bounce-game"
-version = "0.1.2"
+version = "0.2.0"
 description = "Simple bounce game with Python and tkinter"
 authors = ["4513ECHO <4513echo@gmail.com>"]
 license = "MIT"
