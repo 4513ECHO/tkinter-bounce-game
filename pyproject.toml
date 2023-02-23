@@ -1,11 +1,22 @@
 [tool.poetry]
 name = "tkinter-bounce-game"
-version = "0.1.0"
+version = "0.1.1"
 description = "Simple bounce game with Python and tkinter"
 authors = ["4513ECHO <4513echo@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 packages = [{include = "tkinter_bounce_game"}]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Topic :: Games/Entertainment",
+  "Typing :: Typed",
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
