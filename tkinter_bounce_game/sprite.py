@@ -93,20 +93,33 @@ class PointCounter:
         )
 
 
-class GameOverText:
-    role = "gameovertext"
+class OverlayText:
+    role = "overlaytext"
 
     def __init__(self, context: Context) -> None:
         self._context = context
         self.id = context.canvas.create_text(
             250,
             200,
-            text="Game Over",
-            fill="red",
-            font=("Monospace", 30),
-            state="hidden",  # type: ignore
+            text="Press <Space> to start",
+            font=("Monospace", 15),
+            state="normal",
         )
+        self._hidden = False
 
     def draw(self) -> None:
-        if self._context.state == State.Quited:
-            self._context.canvas.itemconfigure(self.id, state="normal")
+        match self._context.state:
+            case State.Runnning if not self._hidden:
+                self._hidden = True
+                self._context.canvas.itemconfigure(
+                    self.id,
+                    state="hidden",
+                )
+            case State.Quited:
+                self._context.canvas.itemconfigure(
+                    self.id,
+                    text="Game Over",
+                    fill="red",
+                    font=("Monospace", 30),
+                    state="normal",
+                )
