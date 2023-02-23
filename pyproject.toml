@@ -5,6 +5,7 @@ description = "Simple bounce game with Python and tkinter"
 authors = ["4513ECHO <4513echo@gmail.com>"]
 license = "MIT"
 readme = "README.md"
+repository = "https://github.com/4513ECHO/tkinter-bounce-game"
 packages = [{include = "tkinter_bounce_game"}]
 classifiers = [
   "License :: OSI Approved :: MIT License",
