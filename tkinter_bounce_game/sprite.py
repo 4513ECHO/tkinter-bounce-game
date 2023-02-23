@@ -1,4 +1,7 @@
+from __future__ import annotations
+
 import random
+from tkinter import Event, Misc
 from typing import Optional
 
 from .context import Context, Drawable, State
@@ -55,8 +58,8 @@ class Paddle:
         context.canvas.move(self.id, 200, 300)
         self._speed = speed
         self._x = 0
-        context.canvas.bind_all("<KeyPress-Left>", self._trun_left)
-        context.canvas.bind_all("<KeyPress-Right>", self._trun_right)
+        context.canvas.bind_all("<KeyPress-Left>", self._turn)
+        context.canvas.bind_all("<KeyPress-Right>", self._turn)
 
     def draw(self) -> None:
         self._context.canvas.move(self.id, self._x, 0)
@@ -66,11 +69,13 @@ class Paddle:
         if pos[2] >= self._context.canvas_width:
             self._x = 0
 
-    def _trun_left(self, _event: object) -> None:
-        self._x = -self._speed
-
-    def _trun_right(self, _event: object) -> None:
-        self._x = self._speed
+    def _turn(self, event: Event[Misc]) -> None:
+        pos = self._context.canvas.coords(self.id)
+        match event.keysym:
+            case "Left" if pos[0] >= 0:
+                self._x = -self._speed
+            case "Right" if pos[2] <= self._context.canvas_width:
+                self._x = self._speed
 
 
 class PointCounter:
