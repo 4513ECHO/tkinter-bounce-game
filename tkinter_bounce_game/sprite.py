@@ -35,10 +35,9 @@ class Ball:
             self._x = -self._speed
 
     def _is_hit_paddle(self, pos: list[float]) -> bool:
+        self._paddle = self._paddle or self._context.get_sprite("paddle")
         if self._paddle is None:
-            self._paddle = self._context.get_sprite("paddle")
-            if self._paddle is None:
-                return False
+            return False
         paddle_pos = self._context.canvas.coords(self._paddle.id)
         return (
             pos[2] >= paddle_pos[0]
@@ -64,17 +63,15 @@ class Paddle:
     def draw(self) -> None:
         self._context.canvas.move(self.id, self._x, 0)
         pos = self._context.canvas.coords(self.id)
-        if pos[0] <= 0:
-            self._x = 0
-        if pos[2] >= self._context.canvas_width:
+        if pos[0] <= 0 or pos[2] >= self._context.canvas_width:
             self._x = 0
 
     def _turn(self, event: Event[Misc]) -> None:
         pos = self._context.canvas.coords(self.id)
         match event.keysym:
-            case "Left" if pos[0] >= 0:
+            case "Left" if not pos[0] <= 0:
                 self._x = -self._speed
-            case "Right" if pos[2] <= self._context.canvas_width:
+            case "Right" if not pos[2] >= self._context.canvas_width:
                 self._x = self._speed
 
 
