@@ -2,7 +2,7 @@
 name = "tkinter-bounce-game"
 version = "0.2.0"
 description = "Simple bounce game with Python and tkinter"
-authors = ["4513ECHO <4513echo@gmail.com>"]
+authors = ["4513ECHO <mail@4513echo.dev>"]
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/4513ECHO/tkinter-bounce-game"
