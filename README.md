@@ -14,7 +14,7 @@ Press `<Space>` to start and press `<Left>`/`<Right>` to move paddle.
 
 ## Installation
 
-tkinter-bounce-game requires Python 3.10 or later with `tkinter` module.
+tkinter-bounce-game requires Python 3.11 or later with `tkinter` module.
 
 ```sh
 pip install tkinter-bounce-game
